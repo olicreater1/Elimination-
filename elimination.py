@@ -17,7 +17,7 @@ def solve_system_of_equations(a1, b1, c1, a2, b2, c2):
 
     # Solve for y
     if b_diff == 0:
-        raise ValueError("Cannot eliminate variable; equations may be dependent or inconsistent.")
+        raise ValueError("Cannot eliminate variable; equations may be dependent or inconsistent. UNDEFINED")
     
     y = c_diff / b_diff
 
