@@ -7,7 +7,7 @@ def solve_system_of_equations(a1, b1, c1, a2, b2, c2):
     m1 = a2
     m2 = a1
 
-    # Multiply both equations
+    # Multiply both equations by each others first value coefficient to make the first values of each equation equal for simplified subtraction in elimination system solving
     eq1 = [m1 * a1, m1 * b1, m1 * c1]
     eq2 = [m2 * a2, m2 * b2, m2 * c2]
 
@@ -15,18 +15,23 @@ def solve_system_of_equations(a1, b1, c1, a2, b2, c2):
     diff = [eq1[i] - eq2[i] for i in range(3)]
     _, b_diff, c_diff = diff
 
-    # Solve for y
-    if b_diff == 0:
-        raise ValueError("Cannot eliminate variable; equations may be dependent or inconsistent. NO SOLUTIONS OR INFINITELY MANY SOLUTIONS")
-    
-    y = c_diff / b_diff
-
-    # Substitute y into one of the original equations to find x
-    x = (c1 - b1 * y) / a1
-
+    # Solve for y and check for solution type
+    if c_diff == b_diff:
+        #check for and print statement for infinitely many solutions 
+        x = "Infinitely Many Solutions"
+        y = "Infinitely Many Solutions"
+    elif c_diff != b_diff:
+        #check for and print statement for no solutions 
+        x = "No Solutions"
+        y = "No Solutions"
+    else:    
+        y = c_diff / b_diff
+        # Substitute y into one of the original equations to find x
+        x = (c1 - b1 * y) / a1
+    #return values from function
     return x, y
-
 def main():
+    # ask user for values
     print("Enter the coefficients and constants for the system of equations:")
     print("Equation 1: a1*x + b1*y = c1")
     a1 = float(input("a1: "))
@@ -37,12 +42,17 @@ def main():
     a2 = float(input("a2: "))
     b2 = float(input("b2: "))
     c2 = float(input("c2: "))
+    
+    # input values into the solve_system_of_equations function to output x and y
+    x, y = solve_system_of_equations(a1, b1, c1, a2, b2, c2)
 
-    try:
-        x, y = solve_system_of_equations(a1, b1, c1, a2, b2, c2)
-        print(f"\nSolution: x = {x}, y = {y}")
-    except ValueError as e:
-        print(f"Error: {e}")
-
+    #check if x and y are intagers to have different print statements for No Solution and Infinitely Many Solutions
+    if x == int and y == int:
+        #print statement for output as an ordered pair
+        print(f"\nSolution: x = {x}, y = {y}", "{x},{y}")
+    else:
+        #prints x so text for no sol and inf sol can be printed correctly
+        print(x)
+    
 if __name__ == "__main__":
     main()
