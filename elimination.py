@@ -24,11 +24,13 @@ def solve_system_of_equations(a1, b1, c1, a2, b2, c2):
         #check for and print statement for no solutions 
         x = "No Solutions"
         y = _    
-   
-    y = c_diff / b_diff
-    # Substitute y into one of the original equations to find x
-    x = (c1 - b1 * y) / a1
-   
+    try:
+        y = c_diff / b_diff
+        # Substitute y into one of the original equations to find x
+        x = (c1 - b1 * y) / a1
+    except ZeroDivisionError:
+        x = "Infinitely Many Solutions"
+        y = _
     #return values from function
     return x, y
 
