@@ -16,20 +16,22 @@ def solve_system_of_equations(a1, b1, c1, a2, b2, c2):
     _, b_diff, c_diff = diff
 
     # Solve for y and check for solution type
-    if c_diff == b_diff:
+    if  b_diff == 0 and c_diff == 0:
         #check for and print statement for infinitely many solutions 
         x = "Infinitely Many Solutions"
-        y = "Infinitely Many Solutions"
-    elif c_diff != b_diff:
+        y = _
+    elif b_diff == 0 and c_diff != 0:
         #check for and print statement for no solutions 
         x = "No Solutions"
-        y = "No Solutions"
-    else:    
-        y = c_diff / b_diff
-        # Substitute y into one of the original equations to find x
-        x = (c1 - b1 * y) / a1
+        y = _    
+   
+    y = c_diff / b_diff
+    # Substitute y into one of the original equations to find x
+    x = (c1 - b1 * y) / a1
+   
     #return values from function
     return x, y
+
 def main():
     # ask user for values
     print("Enter the coefficients and constants for the system of equations:")
@@ -43,16 +45,14 @@ def main():
     b2 = float(input("b2: "))
     c2 = float(input("c2: "))
     
+
     # input values into the solve_system_of_equations function to output x and y
     x, y = solve_system_of_equations(a1, b1, c1, a2, b2, c2)
 
     #check if x and y are intagers to have different print statements for No Solution and Infinitely Many Solutions
-    if x == int and y == int:
-        #print statement for output as an ordered pair
-        print(f"\nSolution: x = {x}, y = {y}", "{x},{y}")
-    else:
-        #prints x so text for no sol and inf sol can be printed correctly
-        print(x)
+    
+    #print statement for output as an ordered pair
+    print(f"\nSolution: x = {x}, y = {y}")
     
 if __name__ == "__main__":
     main()
