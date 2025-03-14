@@ -16,20 +16,21 @@ def solve_system_of_equations(a1, b1, c1, a2, b2, c2):
     _, b_diff, c_diff = diff
 
     # Solve for y and check for solution type
-    if  b_diff == 0 and c_diff == 0:
-        #check for and print statement for infinitely many solutions 
-        x = "Infinitely Many Solutions"
-        y = _
-    elif b_diff == 0 and c_diff != 0:
-        #check for and print statement for no solutions 
-        x = "No Solutions"
-        y = _    
+    if  b_diff == 0:
+        if c_diff == 0:
+            #check for and print statement for infinitely many solutions 
+            x = "Infinitely Many Solutions"
+            y = _
+        else:
+            #check for and print statement for no solutions 
+            x = "No Solutions"
+            y = _    
     try:
         y = c_diff / b_diff
         # Substitute y into one of the original equations to find x
         x = (c1 - b1 * y) / a1
     except ZeroDivisionError:
-        x = "Infinitely Many Solutions"
+        x = "No Solutions"
         y = _
     #return values from function
     return x, y

@@ -3,8 +3,8 @@ from elimination import solve_system_of_equations
 
 class TestSolveSystemOfEquations(unittest.TestCase):
     def testNoSolution(self):
-        a1, b1, c1 = 1, 1, 1
-        a2, b2, c2 = 1, 1, 2
+        a1, b1, c1 = 1, -3, 7
+        a2, b2, c2 = 2, -6, 12
         x, y = solve_system_of_equations(a1, b1, c1, a2, b2, c2)
         self.assertEqual(x, "No Solutions")
         self.assertEqual(y, "No Solutions")
